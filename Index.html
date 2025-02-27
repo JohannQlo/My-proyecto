@@ -3,21 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de GIFs con Dithering</title>
+    <title>Editor de GIFs</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Generador de GIFs con Dithering</h1>
-        <input type="file" id="imageInput" accept="image/*">
-        <canvas id="canvas"></canvas>
-        <div class="controls">
-            <label for="colorTone">Tono de color:</label>
-            <input type="range" id="colorTone" min="0" max="360">
-            <button id="generateGif">Generar GIF</button>
+    <div class="editor">
+        <div class="sidebar">
+            <h2>Capas</h2>
+            <input type="file" id="imageInput" accept="image/*">
+            <button id="addLayer">Agregar Capa</button>
+            <div id="layersPanel"></div>
         </div>
-        <div id="output"></div>
+
+        <div class="workspace">
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <div class="controls">
+            <label for="effects">Efectos:</label>
+            <select id="effects">
+                <option value="none">Ninguno</option>
+                <option value="bw">Blanco y Negro</option>
+                <option value="redblue">Azul y Rojo</option>
+                <option value="greenpurple">Verde y Morado</option>
+            </select>
+
+            <label for="colorPicker">Selector Manual:</label>
+            <input type="color" id="colorPicker">
+
+            <button id="generateGif">Generar GIF</button>
+            <a id="downloadLink" download="output.gif" style="display:none">Descargar GIF</a>
+        </div>
     </div>
+
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
 </body>
